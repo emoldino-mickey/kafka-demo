@@ -28,13 +28,14 @@ public class KafkaMessageListener {
 		}
 	}
 		
-//@KafkaListener(topics = "#{'${mms.topic.name}'}")
-//	public void receiveFromAI(ConsumerRecord<?, ?> consumerRecord) {
-//		if(!ObjectUtils.isEmpty(consumerRecord)) { 
-//			System.out.println("Receive message=[" + consumerRecord.toString() + "]");			
-//			AiData data = ValueUtils.fromJsonStr((String) consumerRecord.value(), AiData.class);	
-//			if(!ObjectUtils.isEmpty(data))
-//			System.out.println("id = " + data.getId() + ", data = " + data.getResult());
-//		}        
-//	}
+	// Basic Kafka Listener
+    // @KafkaListener(topics = "#{'${mms.topic.name}'}")
+	public void receiveFromAI(ConsumerRecord<?, ?> consumerRecord) {
+		if(!ObjectUtils.isEmpty(consumerRecord)) { 
+			System.out.println("Receive message=[" + consumerRecord.toString() + "]");			
+			AiData data = ValueUtils.fromJsonStr((String) consumerRecord.value(), AiData.class);	
+			if(!ObjectUtils.isEmpty(data))
+			System.out.println("id = " + data.getId() + ", data = " + data.getResult());
+		}        
+	}
 }
