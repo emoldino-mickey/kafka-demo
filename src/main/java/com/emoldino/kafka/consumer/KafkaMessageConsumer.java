@@ -1,4 +1,4 @@
-package com.emoldino.kafka.comm;
+package com.emoldino.kafka.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class KafkaMessageListener {
+public class KafkaMessageConsumer {
 
 	@KafkaListener(topics = "#{'${mms.topic.name}'}", groupId = "mms", containerFactory = "mmsKafkaListenerContainerFactory")	
 	public void receiveFromAI(@Payload ConsumerRecord<?, ?> consumerRecord, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {

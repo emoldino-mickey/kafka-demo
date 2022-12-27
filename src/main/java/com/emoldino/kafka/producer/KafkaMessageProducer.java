@@ -1,4 +1,4 @@
-package com.emoldino.kafka.comm;
+package com.emoldino.kafka.producer;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;

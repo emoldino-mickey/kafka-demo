@@ -1,4 +1,4 @@
-package com.emoldino.kafka.config;
+package com.emoldino.kafka.producer.config;
 
 import java.util.HashMap;
 import java.util.Map;
