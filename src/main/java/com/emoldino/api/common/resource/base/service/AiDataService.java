@@ -3,7 +3,7 @@ package com.emoldino.api.common.resource.base.service;
 import org.springframework.stereotype.Service;
 
 import com.emoldino.api.common.resource.base.dto.AiDataIn;
-import com.emoldino.kafka.comm.KafkaMessageProducer;
+import com.emoldino.kafka.producer.KafkaMessageProducer;
 
 import lombok.RequiredArgsConstructor;
 
