@@ -27,16 +27,27 @@ public class KafkaConsumerConfig {
 		cfg.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
 		cfg.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);		
 		cfg.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);	
-		//cfg.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+		cfg.put("security.protocol", "SASL_SSL");
+		cfg.put("sasl.mechanism", "AWS_MSK_IAM");
+		cfg.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
+		cfg.put("ssl.endpoint.identification.algorithm", "https");
+		cfg.put("client.id", "emoldino-kafka-demo");
+		cfg.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");
 		return new DefaultKafkaConsumerFactory<>(cfg);
 	}
 	    
     public ConsumerFactory<String, Object> multiTypeConsumerFactory() {
-        HashMap<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaUrl);
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        return new DefaultKafkaConsumerFactory<>(props);
+        HashMap<String, Object> cfg = new HashMap<>();
+        cfg.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaUrl);
+        cfg.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        cfg.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+		cfg.put("security.protocol", "SASL_SSL");
+		cfg.put("sasl.mechanism", "AWS_MSK_IAM");
+		cfg.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
+		cfg.put("ssl.endpoint.identification.algorithm", "https");
+		cfg.put("client.id", "emoldino-kafka-demo");
+		cfg.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");
+        return new DefaultKafkaConsumerFactory<>(cfg);
     }
         
 

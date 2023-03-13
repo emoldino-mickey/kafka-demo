@@ -31,6 +31,10 @@ public class KafkaProducerConfig {
 		cfg.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);		
 		cfg.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 		// cfg.put(ProducerConfig.ACKS_CONFIG, "all"); // Message 수신 완료 신호 설정
+		cfg.put("security.protocol", "SASL_SSL");
+		cfg.put("sasl.mechanism", "AWS_MSK_IAM");
+		cfg.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
+		cfg.put("ssl.endpoint.identification.algorithm", "https");
 		return new DefaultKafkaProducerFactory<>(cfg);
 	}
 	

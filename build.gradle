@@ -78,8 +78,9 @@ dependencies {
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	
 	// Kafka
-	implementation 'org.springframework.kafka:spring-kafka'
-	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	implementation 'org.springframework.kafka:spring-kafka:2.8.1'    
+    implementation 'software.amazon.msk:aws-msk-iam-auth:1.1.6'
+    implementation 'com.amazonaws:aws-java-sdk:1.11.991'	
 }
 
 tasks.named('test') {
