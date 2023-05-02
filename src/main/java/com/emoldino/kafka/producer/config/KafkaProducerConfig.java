@@ -3,7 +3,9 @@ package com.emoldino.kafka.producer.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.emoldino.api.common.resource.base.dto.AiData;
 
 @Configuration
@@ -35,6 +38,12 @@ public class KafkaProducerConfig {
 		cfg.put("sasl.mechanism", "AWS_MSK_IAM");
 		cfg.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
 		cfg.put("ssl.endpoint.identification.algorithm", "https");
+		cfg.put("client.id", "emoldino-kafka-demo");
+		cfg.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");				
+		
+		 DefaultAWSCredentialsProviderChain credentialsProvider = DefaultAWSCredentialsProviderChain.getInstance();
+		 cfg.put("aws.accessKeyId","AKIAZ47SBXAVM42A7FOV");
+	     cfg.put("aws.secretKey", "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");
 		return new DefaultKafkaProducerFactory<>(cfg);
 	}
 	
