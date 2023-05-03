@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class KafkaMessageConsumer {		
 
-	@KafkaListener(topics = "#{'${mms.topic.name}'}", groupId = "mms", containerFactory = "mmsKafkaListenerContainerFactory")	
+    @KafkaListener(topics = "#{'${ai.fetch.topic.name}'}", groupId = "mms", containerFactory = "mmsKafkaListenerContainerFactory")		
 	public void receiveFromAI(@Payload ConsumerRecord<?, ?> consumerRecord, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
 		if (!ObjectUtils.isEmpty(consumerRecord)) {
 			log.info("Receive message=[" + consumerRecord.toString() + "]");
