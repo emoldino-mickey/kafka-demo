@@ -21,7 +21,8 @@ public class AiDataControllerImpl implements AiDataController {
 
 	@Override
 	public SuccessOut send(AiDataIn input) {
-		service.send(input);
+//		service.send(input);
+		service.send2();
 		return SuccessOut.getDefault();
 	}
 

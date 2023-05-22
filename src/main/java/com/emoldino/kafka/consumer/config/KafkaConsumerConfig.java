@@ -43,9 +43,6 @@ public class KafkaConsumerConfig {
 		cfg.put("client.id", "emoldino-kafka-demo");
 		cfg.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");		
 		
-//		 DefaultAWSCredentialsProviderChain credentialsProvider = DefaultAWSCredentialsProviderChain.getInstance();
-//		 cfg.put("aws.accessKeyId","AKIAZ47SBXAVM42A7FOV");
-//	     cfg.put("aws.secretKey", "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");
 		return new DefaultKafkaConsumerFactory<>(cfg);
 	}
 
